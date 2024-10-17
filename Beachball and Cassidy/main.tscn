@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3vfpobvs3osx"]
+[gd_scene load_steps=3 format=3 uid="uid://3vfpobvs3osx"]
 
 [ext_resource type="PackedScene" uid="uid://cgvtntkbk203t" path="res://world.tscn" id="1_682ds"]
+[ext_resource type="Script" path="res://main.gd" id="1_ydsiy"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ydsiy")
 
 [node name="UI" type="Control" parent="."]
 anchors_preset = 0

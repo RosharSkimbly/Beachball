@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://boo1hd1m170ab"]
+
+[ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_eaelp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Cassidy" parent="." instance=ExtResource("1_eaelp")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)

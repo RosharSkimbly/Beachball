@@ -1,37 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgvtntkbk203t"]
+[gd_scene load_steps=7 format=3 uid="uid://cgvtntkbk203t"]
 
 [ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_cnlpn"]
+[ext_resource type="Script" path="res://world_border.gd" id="1_yhrsy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfh0k"]
-size = Vector2(1158, 5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y666"]
+size = Vector2(1168, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu6b1"]
-size = Vector2(7, 653)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un020"]
+size = Vector2(19, 664)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q77yw"]
-size = Vector2(1165, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3lhc"]
+size = Vector2(1171, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uewhn"]
-size = Vector2(6.25, 661)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80hl4"]
+size = Vector2(23.25, 656)
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_yhrsy")
 
 [node name="Cassidy" parent="." instance=ExtResource("1_cnlpn")]
 
-[node name="World_Border" type="StaticBody2D" parent="."]
+[node name="WorldBorder" type="Area2D" parent="."]
 
-[node name="Top_Border" type="CollisionShape2D" parent="World_Border"]
-position = Vector2(579, -2.5)
-shape = SubResource("RectangleShape2D_qfh0k")
+[node name="TopBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(572, -10)
+shape = SubResource("RectangleShape2D_1y666")
 
-[node name="Left_Border" type="CollisionShape2D" parent="World_Border"]
-position = Vector2(-3.5, 321.5)
-shape = SubResource("RectangleShape2D_yu6b1")
+[node name="LeftBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(-10, 329)
+shape = SubResource("RectangleShape2D_un020")
 
-[node name="Bottom_Border" type="CollisionShape2D" parent="World_Border"]
-position = Vector2(575.5, 652)
-shape = SubResource("RectangleShape2D_q77yw")
+[node name="BottomBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(585, 658)
+shape = SubResource("RectangleShape2D_o3lhc")
 
-[node name="Right_Border" type="CollisionShape2D" parent="World_Border"]
-position = Vector2(1154.88, 325.5)
-shape = SubResource("RectangleShape2D_uewhn")
+[node name="RightBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(1163.38, 317)
+shape = SubResource("RectangleShape2D_80hl4")
+
+[connection signal="body_entered" from="WorldBorder" to="." method="_on_area_2d_body_entered"]
