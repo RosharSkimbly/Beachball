@@ -7,6 +7,7 @@ func _ready():
 	world.connect('ChangeScene', change)
 
 func change():
+	var worldagain = $SubViewportContainer/SubViewport.get_child(0)
 	$SubViewportContainer/SubViewport.remove_child($SubViewportContainer/SubViewport/World)
-	$SubViewportContainer/SubViewport/World.queue_free()
+	worldagain.queue_free()
 	$SubViewportContainer/SubViewport.add_child(Scene2.instantiate())

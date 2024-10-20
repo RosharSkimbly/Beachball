@@ -4,7 +4,13 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2429.0
+offset_bottom = 648.0
+color = Color(1, 0.258824, 0, 1)
+
 [node name="Cassidy" parent="." instance=ExtResource("1_eaelp")]
+position = Vector2(2400, 296)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(1853, 324)

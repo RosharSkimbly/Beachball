@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgvtntkbk203t"]
+
+[ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_cnlpn"]
+[ext_resource type="Script" path="res://world_border.gd" id="1_yhrsy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15i8g"]
+size = Vector2(493.25, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y666"]
+size = Vector2(1993, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un020"]
+size = Vector2(19, 1289)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3lhc"]
+size = Vector2(1972.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80hl4"]
+size = Vector2(24.625, 1303)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_yhrsy")
+
+[node name="Cassidy" parent="." instance=ExtResource("1_cnlpn")]
+position = Vector2(1777, 144)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1380, 323)
+
+[node name="CameraBody" type="CharacterBody2D" parent="Camera2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="TopCameraBorder" type="CollisionShape2D" parent="Camera2D/CameraBody"]
+position = Vector2(518, -420)
+shape = SubResource("RectangleShape2D_15i8g")
+
+[node name="RightCameraBorder" type="CollisionShape2D" parent="Camera2D/CameraBody"]
+position = Vector2(760, -177.625)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_15i8g")
+
+[node name="LeftCameraBorder" type="CollisionShape2D" parent="Camera2D/CameraBody"]
+position = Vector2(271, -177)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_15i8g")
+
+[node name="BottomCameraBorder" type="CollisionShape2D" parent="Camera2D/CameraBody"]
+position = Vector2(513.75, 66)
+shape = SubResource("RectangleShape2D_15i8g")
+
+[node name="WorldBorder" type="Area2D" parent="."]
+position = Vector2(180, 100)
+
+[node name="TopBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(803.5, -112)
+shape = SubResource("RectangleShape2D_1y666")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(-191, 539.5)
+shape = SubResource("RectangleShape2D_un020")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(804.75, 1175)
+shape = SubResource("RectangleShape2D_o3lhc")
+
+[node name="RightBorder" type="CollisionShape2D" parent="WorldBorder"]
+position = Vector2(1788.69, 538.5)
+shape = SubResource("RectangleShape2D_80hl4")
+
+[connection signal="body_entered" from="WorldBorder" to="." method="_on_area_2d_body_entered"]
