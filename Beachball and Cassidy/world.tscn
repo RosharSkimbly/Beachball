@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgvtntkbk203t"]
+[gd_scene load_steps=11 format=3 uid="uid://cgvtntkbk203t"]
 
 [ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_cnlpn"]
 [ext_resource type="Script" path="res://world_border.gd" id="1_yhrsy"]
@@ -7,7 +7,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x35te"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15i8g"]
-size = Vector2(298, 11.7506)
+size = Vector2(330, 12.8759)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_int71"]
 size = Vector2(776, 313)
@@ -19,7 +19,10 @@ size = Vector2(2740.5, 25)
 size = Vector2(2801.25, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80hl4"]
-size = Vector2(440, 322.625)
+size = Vector2(274, 322.625)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7u7l"]
+radius = 97.0464
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_yhrsy")
@@ -31,34 +34,26 @@ texture = ExtResource("2_bfewg")
 flip_h = true
 
 [node name="Cassidy" parent="." instance=ExtResource("1_cnlpn")]
-position = Vector2(1426, 654)
+position = Vector2(1364, 733)
 
 [node name="CameraBody" type="RigidBody2D" parent="."]
 visible = false
 position = Vector2(1382, 621)
-collision_layer = 2
-collision_mask = 3
+collision_layer = 6
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_x35te")
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 100.0
 
-[node name="TopCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(6, 28)
-shape = SubResource("RectangleShape2D_15i8g")
-
 [node name="RightCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(156, 171)
+position = Vector2(75, 165)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_15i8g")
 
 [node name="LeftCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(-145, 169)
+position = Vector2(-226.563, 161)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_15i8g")
-
-[node name="BottomCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(0, 311)
 shape = SubResource("RectangleShape2D_15i8g")
 
 [node name="Camera2D" type="Camera2D" parent="CameraBody"]
@@ -66,7 +61,8 @@ shape = SubResource("RectangleShape2D_15i8g")
 [node name="SceneChange" type="Area2D" parent="."]
 visible = false
 position = Vector2(180, 100)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 4
 
 [node name="LeftBorder" type="CollisionShape2D" parent="SceneChange"]
 position = Vector2(-650, 683.5)
@@ -74,6 +70,8 @@ shape = SubResource("RectangleShape2D_int71")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 visible = false
+collision_layer = 3
+collision_mask = 7
 
 [node name="TopBorder" type="CollisionShape2D" parent="WorldBorder"]
 position = Vector2(619.25, 609.5)
@@ -84,7 +82,25 @@ position = Vector2(587.625, 956)
 shape = SubResource("RectangleShape2D_o3lhc")
 
 [node name="RightBorder" type="CollisionShape2D" parent="WorldBorder"]
-position = Vector2(1784, 784.688)
+position = Vector2(1867, 784.688)
 shape = SubResource("RectangleShape2D_80hl4")
+
+[node name="CapsuleBorder" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 0
+
+[node name="RightCapsuleBorder" type="CollisionShape2D" parent="CapsuleBorder"]
+position = Vector2(1622, 682)
+shape = SubResource("CircleShape2D_l7u7l")
+
+[node name="LeftCapsuleBorder" type="CollisionShape2D" parent="CapsuleBorder"]
+position = Vector2(1564, 682)
+shape = SubResource("CircleShape2D_l7u7l")
+
+[node name="Img0121" type="Sprite2D" parent="."]
+position = Vector2(3384.82, 476)
+scale = Vector2(0.684438, 0.684438)
+texture = ExtResource("2_bfewg")
 
 [connection signal="body_entered" from="SceneChange" to="." method="_on_area_2d_body_entered"]

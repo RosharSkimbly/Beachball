@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://boo1hd1m170ab"]
+[gd_scene load_steps=4 format=3 uid="uid://boo1hd1m170ab"]
 
 [ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_eaelp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oetjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1vg4"]
+size = Vector2(298, 11.7506)
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,7 +15,36 @@ offset_bottom = 648.0
 color = Color(1, 0.258824, 0, 1)
 
 [node name="Cassidy" parent="." instance=ExtResource("1_eaelp")]
-position = Vector2(2400, 296)
+position = Vector2(2336, 296)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1853, 324)
+
+[node name="CameraBody" type="RigidBody2D" parent="."]
+position = Vector2(1848, 328)
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_oetjj")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 100.0
+
+[node name="TopCameraBorder" type="CollisionShape2D" parent="CameraBody"]
+position = Vector2(431, -176)
+shape = SubResource("RectangleShape2D_h1vg4")
+
+[node name="RightCameraBorder" type="CollisionShape2D" parent="CameraBody"]
+position = Vector2(581, -33)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_h1vg4")
+
+[node name="LeftCameraBorder" type="CollisionShape2D" parent="CameraBody"]
+position = Vector2(280, -35)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_h1vg4")
+
+[node name="BottomCameraBorder" type="CollisionShape2D" parent="CameraBody"]
+position = Vector2(425, 107)
+shape = SubResource("RectangleShape2D_h1vg4")
+
+[node name="Camera2D" type="Camera2D" parent="CameraBody"]
