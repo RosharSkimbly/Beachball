@@ -1,16 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgvtntkbk203t"]
+[gd_scene load_steps=27 format=3 uid="uid://cgvtntkbk203t"]
 
-[ext_resource type="PackedScene" uid="uid://dvxf5ool18wvp" path="res://cassidy.tscn" id="1_cnlpn"]
 [ext_resource type="Script" path="res://world_border.gd" id="1_yhrsy"]
 [ext_resource type="Texture2D" uid="uid://ogf2jd1sg8w3" path="res://Images/IMG_0121.PNG" id="2_bfewg"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x35te"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15i8g"]
-size = Vector2(330, 12.8759)
+[ext_resource type="Script" path="res://Cassidy_Move.gd" id="3_7i6xm"]
+[ext_resource type="Texture2D" uid="uid://b1ykv7h668dgq" path="res://Images/sprite png.png" id="4_40tu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_int71"]
-size = Vector2(776, 313)
+size = Vector2(815, 313)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1y666"]
 size = Vector2(2740.5, 25)
@@ -24,54 +20,195 @@ size = Vector2(274, 322.625)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7u7l"]
 radius = 97.0464
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sytt4"]
+size = Vector2(22, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3nfa"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 25, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc0vw"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(327, 521, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uilr"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 273, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afjit"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 769, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oan4e"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(202, 25, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beknr"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 25, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7r10"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(327, 25, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce20w"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 521, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe77o"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(202, 521, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8sto"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(202, 273, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjrgv"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 273, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niywx"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(327, 273, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dshs"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(202, 769, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j7wg"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(77, 769, 125, 248)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j11cd"]
+atlas = ExtResource("4_40tu0")
+region = Rect2(327, 769, 125, 248)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cf84m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3nfa")
+}],
+"loop": true,
+"name": &"Idle Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc0vw")
+}],
+"loop": true,
+"name": &"Idle Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uilr")
+}],
+"loop": true,
+"name": &"Idle Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afjit")
+}],
+"loop": true,
+"name": &"Idle Up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oan4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beknr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7r10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beknr")
+}],
+"loop": true,
+"name": &"Walk Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce20w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc0vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe77o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc0vw")
+}],
+"loop": true,
+"name": &"Walk Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8sto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjrgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjrgv")
+}],
+"loop": true,
+"name": &"Walk Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dshs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j7wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j11cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j7wg")
+}],
+"loop": true,
+"name": &"Walk Up",
+"speed": 5.0
+}]
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_yhrsy")
+metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_horizontal_guides_ = [821.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WorldTexture" type="Sprite2D" parent="."]
 position = Vector2(604, 475)
 scale = Vector2(0.680115, 0.680115)
 texture = ExtResource("2_bfewg")
 flip_h = true
 
-[node name="Cassidy" parent="." instance=ExtResource("1_cnlpn")]
-position = Vector2(1364, 733)
-
-[node name="CameraBody" type="RigidBody2D" parent="."]
-visible = false
-position = Vector2(1382, 621)
-collision_layer = 6
-collision_mask = 7
-physics_material_override = SubResource("PhysicsMaterial_x35te")
-gravity_scale = 0.0
-lock_rotation = true
-linear_damp = 100.0
-
-[node name="RightCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(75, 165)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_15i8g")
-
-[node name="LeftCameraBorder" type="CollisionShape2D" parent="CameraBody"]
-position = Vector2(-226.563, 161)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_15i8g")
-
-[node name="Camera2D" type="Camera2D" parent="CameraBody"]
-
 [node name="SceneChange" type="Area2D" parent="."]
-visible = false
 position = Vector2(180, 100)
 collision_layer = 0
 collision_mask = 4
 
 [node name="LeftBorder" type="CollisionShape2D" parent="SceneChange"]
-position = Vector2(-650, 683.5)
+position = Vector2(-630.5, 683.5)
 shape = SubResource("RectangleShape2D_int71")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
-visible = false
-collision_layer = 3
-collision_mask = 7
+collision_layer = 35
+collision_mask = 39
 
 [node name="TopBorder" type="CollisionShape2D" parent="WorldBorder"]
 position = Vector2(619.25, 609.5)
@@ -82,25 +219,57 @@ position = Vector2(587.625, 956)
 shape = SubResource("RectangleShape2D_o3lhc")
 
 [node name="RightBorder" type="CollisionShape2D" parent="WorldBorder"]
-position = Vector2(1867, 784.688)
+position = Vector2(2101, 779)
 shape = SubResource("RectangleShape2D_80hl4")
 
 [node name="CapsuleBorder" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 0
 
 [node name="RightCapsuleBorder" type="CollisionShape2D" parent="CapsuleBorder"]
-position = Vector2(1622, 682)
+position = Vector2(1624, 683)
 shape = SubResource("CircleShape2D_l7u7l")
 
 [node name="LeftCapsuleBorder" type="CollisionShape2D" parent="CapsuleBorder"]
-position = Vector2(1564, 682)
+position = Vector2(1569, 682)
 shape = SubResource("CircleShape2D_l7u7l")
 
-[node name="Img0121" type="Sprite2D" parent="."]
+[node name="TiledTexture" type="Sprite2D" parent="."]
 position = Vector2(3384.82, 476)
 scale = Vector2(0.684438, 0.684438)
 texture = ExtResource("2_bfewg")
+
+[node name="CameraBorder" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="LeftBorder" type="CollisionShape2D" parent="CameraBorder"]
+position = Vector2(-76, 785)
+shape = SubResource("RectangleShape2D_sytt4")
+
+[node name="Cassidy" type="CharacterBody2D" parent="."]
+position = Vector2(1336, 798)
+collision_layer = 39
+collision_mask = 41
+script = ExtResource("3_7i6xm")
+speed = 250
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cassidy"]
+texture_filter = 1
+position = Vector2(0, -78)
+scale = Vector2(-0.720657, 0.770569)
+sprite_frames = SubResource("SpriteFrames_cf84m")
+animation = &"Idle Up"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cassidy"]
+position = Vector2(-635, -378)
+polygon = PackedVector2Array(601, 378, 667, 378, 667, 365, 601, 365, 601, 372)
+
+[node name="Camera2D" type="Camera2D" parent="Cassidy"]
+position = Vector2(2, 1)
+limit_left = -71
+limit_top = 296
+limit_right = 1962
+limit_bottom = -352
 
 [connection signal="body_entered" from="SceneChange" to="." method="_on_area_2d_body_entered"]

@@ -1,18 +1,204 @@
-[gd_scene load_steps=10 format=3 uid="uid://duocepwsrtpkw"]
+[gd_scene load_steps=30 format=3 uid="uid://duocepwsrtpkw"]
 
-[ext_resource type="Texture2D" uid="uid://cx5m2s36m6do7" path="res://9259354.jpg" id="1_6hqdc"]
-[ext_resource type="Texture2D" uid="uid://dsr7tjrwtno06" path="res://placeholder_attack.png" id="2_odqy3"]
-[ext_resource type="Texture2D" uid="uid://2mndsch4g6gf" path="res://icon.svg" id="2_pq5pd"]
-[ext_resource type="Texture2D" uid="uid://p3xev354sh3j" path="res://defend_placeholder.jpeg" id="4_b2afp"]
-[ext_resource type="Texture2D" uid="uid://bw8qn5yqfkl8g" path="res://abilities_placeholder.jpeg" id="5_xtuxt"]
-[ext_resource type="Texture2D" uid="uid://b3tosxuwfkfn7" path="res://button_placeholder.jpeg" id="6_hff4n"]
-[ext_resource type="Texture2D" uid="uid://wa0iy767klr3" path="res://reason_placeholder.jpeg" id="7_dcekq"]
+[ext_resource type="Script" path="res://battle.gd" id="1_4et7f"]
+[ext_resource type="Texture2D" uid="uid://dteyn25821uah" path="res://Images/fight back png.png" id="2_gpt0b"]
+[ext_resource type="Texture2D" uid="uid://cbptviy52k3ah" path="res://Images/attackbutton.png" id="3_jahm2"]
+[ext_resource type="Texture2D" uid="uid://di3utganvrune" path="res://Images/guardbutton.png" id="4_wpu3i"]
+[ext_resource type="Texture2D" uid="uid://bo1mnjd8uoxyl" path="res://Images/skillsbutton.png" id="5_5lrav"]
+[ext_resource type="Texture2D" uid="uid://baovbhmipq7qw" path="res://Images/communicatebutton.png" id="6_28rf7"]
+[ext_resource type="Texture2D" uid="uid://djgcnsfr08dfc" path="res://Images/heart_sprite.png" id="7_cnncj"]
+[ext_resource type="Texture2D" uid="uid://dq4mw2cc8417o" path="res://Images/reasonbutton.png" id="7_own2e"]
+[ext_resource type="Texture2D" uid="uid://7wlutl3ior60" path="res://Images/button outline.png" id="8_is30j"]
+[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Images/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="8_s32yx"]
+[ext_resource type="Texture2D" uid="uid://cabjugb17n0m7" path="res://Images/fight cass png 2.png" id="9_e3l2m"]
+[ext_resource type="Texture2D" uid="uid://b3opus1deonpn" path="res://Images/fight bb png 2.png" id="10_mxnbh"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_agwqh"]
-texture = ExtResource("2_pq5pd")
+[sub_resource type="Animation" id="Animation_a8470"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingCursor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Theme" id="Theme_1g30o"]
-/styles/texture = SubResource("StyleBoxTexture_agwqh")
+[sub_resource type="Animation" id="Animation_h0y4h"]
+resource_name = "pointer_blink"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlashingCursor:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqerr"]
+_data = {
+"RESET": SubResource("Animation_a8470"),
+"pointer_blink": SubResource("Animation_h0y4h")
+}
+
+[sub_resource type="Animation" id="Animation_qa8m2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-96, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_vso2t"]
+resource_name = "cassidybounce"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1, 6, 10.7, 15.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-96, -8), Vector2(-90, -4), Vector2(-96, -13), Vector2(-117, -2.94444), Vector2(-96, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hjmu"]
+_data = {
+"RESET": SubResource("Animation_qa8m2"),
+"cassidybounce": SubResource("Animation_vso2t")
+}
+
+[sub_resource type="Theme" id="Theme_rsfnq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj5mg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gs4u"]
+bg_color = Color(0.4, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_v3bqr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_q83me"]
+resource_name = "beachbounce"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(64, 192), Vector2(48, 160), Vector2(30, 192), Vector2(48, 160), Vector2(64, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ho2f0"]
+_data = {
+"RESET": SubResource("Animation_v3bqr"),
+"beachbounce": SubResource("Animation_q83me")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84h3i"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyaac"]
+bg_color = Color(0.4, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_qgebh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -1112)]
+}
+
+[sub_resource type="Animation" id="Animation_ga23i"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, -1112), Vector2(-48, -296)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kjnr"]
+_data = {
+"RESET": SubResource("Animation_qgebh"),
+"fade_out": SubResource("Animation_ga23i")
+}
 
 [node name="BattleMenu" type="Control"]
 layout_mode = 3
@@ -21,50 +207,260 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4et7f")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_6hqdc")
+texture = ExtResource("2_gpt0b")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_direction = 2
+[node name="TextMenu" type="ColorRect" parent="."]
+z_index = 3
 layout_mode = 0
-offset_left = 8.0
-offset_top = 560.0
-offset_right = 1144.0
+offset_left = 40.0
+offset_top = 528.0
+offset_right = 1112.0
 offset_bottom = 640.0
-theme = SubResource("Theme_1g30o")
-alignment = 1
+color = Color(0, 0, 0, 1)
 
-[node name="Attack" type="TextureButton" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="TextMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+theme_override_font_sizes/font_size = 30
+text = "You've entered battle with the strange robot!"
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_lqerr")
+}
+
+[node name="FlashingCursor" type="TextureRect" parent="TextMenu"]
+visible = false
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 64.0
+offset_right = 1064.0
+offset_bottom = 104.0
+texture = ExtResource("7_cnncj")
+
+[node name="CassidySprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -8.0
+offset_right = 1028.0
+offset_bottom = 624.0
+texture = ExtResource("9_e3l2m")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CassidySprite"]
+libraries = {
+"": SubResource("AnimationLibrary_2hjmu")
+}
+
+[node name="HealthBar" type="ProgressBar" parent="CassidySprite"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 141.0
+offset_right = 359.0
+offset_bottom = 154.0
+theme = SubResource("Theme_rsfnq")
+theme_override_constants/outline_size = 5
+theme_override_styles/background = SubResource("StyleBoxFlat_fj5mg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3gs4u")
+value = 100.0
+show_percentage = false
+
+[node name="BeachballSprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 1230.0
+offset_bottom = 848.0
+texture = ExtResource("10_mxnbh")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BeachballSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_ho2f0")
+}
+
+[node name="HealthBar" type="ProgressBar" parent="BeachballSprite"]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 160.0
+offset_right = 992.0
+offset_bottom = 173.0
+theme_override_styles/background = SubResource("StyleBoxFlat_84h3i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nyaac")
+value = 100.0
+show_percentage = false
+
+[node name="ButtonGrid" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -556.0
+offset_top = -384.0
+offset_right = 1492.0
+offset_bottom = 768.0
+texture = ExtResource("8_is30j")
+
+[node name="ColorRect" type="ColorRect" parent="ButtonGrid"]
+modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 0
+offset_left = 852.0
+offset_top = 832.0
+offset_right = 1412.0
+offset_bottom = 997.0
+color = Color(0.94902, 0.670588, 0.811765, 1)
+
+[node name="SuckerPunch" type="Button" parent="ButtonGrid"]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 840.0
+offset_right = 1016.0
+offset_bottom = 896.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+disabled = true
+text = "Sucker Punch"
+
+[node name="PocketSand" type="Button" parent="ButtonGrid"]
+visible = false
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 840.0
+offset_right = 1210.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+disabled = true
+text = "Pocket Sand"
+
+[node name="LegSweep" type="Button" parent="ButtonGrid"]
+visible = false
+layout_mode = 0
+offset_left = 1247.0
+offset_top = 840.0
+offset_right = 1404.0
+offset_bottom = 896.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+disabled = true
+text = "Leg Sweep"
+
+[node name="Back" type="Button" parent="ButtonGrid"]
+visible = false
+layout_mode = 0
+offset_left = 1068.0
+offset_top = 936.0
+offset_right = 1197.0
+offset_bottom = 984.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+disabled = true
+text = "Back"
+
+[node name="Allies" type="Button" parent="ButtonGrid"]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 840.0
+offset_right = 1404.0
+offset_bottom = 992.0
+theme_override_fonts/font = ExtResource("8_s32yx")
+disabled = true
+text = "You might be able to communicate with your allies here, 
+if you had any at the moment."
+
+[node name="Attack" type="TextureButton" parent="."]
+visible = false
+z_index = 5
 layout_mode = 2
-texture_normal = ExtResource("2_odqy3")
+offset_left = 313.0
+offset_top = 456.0
+offset_right = 460.0
+offset_bottom = 529.0
+texture_normal = ExtResource("3_jahm2")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Guard" type="TextureButton" parent="HBoxContainer"]
+[node name="Guard" type="TextureButton" parent="."]
+visible = false
+z_index = 5
 layout_mode = 2
-texture_normal = ExtResource("4_b2afp")
+offset_left = 476.0
+offset_top = 447.0
+offset_right = 658.0
+offset_bottom = 541.0
+texture_normal = ExtResource("4_wpu3i")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Abilities" type="TextureButton" parent="HBoxContainer"]
+[node name="Skills" type="TextureButton" parent="."]
+visible = false
+z_index = 5
 layout_mode = 2
-texture_normal = ExtResource("5_xtuxt")
+offset_left = 678.0
+offset_top = 447.0
+offset_right = 844.0
+offset_bottom = 537.0
+texture_normal = ExtResource("5_5lrav")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Communicate" type="TextureButton" parent="HBoxContainer"]
+[node name="Communicate" type="TextureButton" parent="."]
+visible = false
+z_index = 5
 layout_mode = 2
-texture_normal = ExtResource("6_hff4n")
+offset_left = 403.0
+offset_top = 523.0
+offset_right = 550.0
+offset_bottom = 602.0
+texture_normal = ExtResource("6_28rf7")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Reason" type="TextureButton" parent="HBoxContainer"]
+[node name="Reason" type="TextureButton" parent="."]
+visible = false
+z_index = 5
 layout_mode = 2
-texture_normal = ExtResource("7_dcekq")
+offset_left = 576.0
+offset_top = 518.0
+offset_right = 743.0
+offset_bottom = 609.0
+texture_normal = ExtResource("7_own2e")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = -8.0
+offset_top = -1112.0
+offset_right = 1192.0
+offset_bottom = -8.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_3kjnr")
+}
+
+[connection signal="button_up" from="ButtonGrid/SuckerPunch" to="." method="_on_sucker_punch_button_up"]
+[connection signal="button_up" from="ButtonGrid/PocketSand" to="." method="_on_pocket_sand_button_up"]
+[connection signal="button_up" from="ButtonGrid/LegSweep" to="." method="_on_leg_sweep_button_up"]
+[connection signal="button_up" from="ButtonGrid/Back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="ButtonGrid/Allies" to="." method="_on_allies_button_up"]
+[connection signal="button_up" from="Attack" to="." method="_on_attack_button_up"]
+[connection signal="button_up" from="Guard" to="." method="_on_guard_button_up"]
+[connection signal="button_up" from="Skills" to="." method="_on_abilities_button_up"]
+[connection signal="button_up" from="Communicate" to="." method="_on_communicate_button_up"]
+[connection signal="button_up" from="Reason" to="." method="_on_reason_button_up"]
+[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

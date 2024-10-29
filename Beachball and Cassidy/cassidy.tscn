@@ -166,23 +166,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Cassidy" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Cassidy" type="CharacterBody2D"]
 position = Vector2(4, 77)
 collision_layer = 7
 collision_mask = 9
 script = ExtResource("1_x03h8")
 speed = 250
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -78)
 scale = Vector2(-0.720657, 0.770569)
 sprite_frames = SubResource("SpriteFrames_wyndh")
 animation = &"Idle Up"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 position = Vector2(-635, -378)
 polygon = PackedVector2Array(601, 378, 667, 378, 667, 365, 601, 365, 601, 372)

@@ -12,3 +12,7 @@ func _on_quit_button_up():
 func _on_start_button_up():
 	if menuActive == false:
 		get_tree().change_scene_to_file("res://main.tscn")
+		
+
+func _ready():
+	$FadeOut/AnimationPlayer.play("fade_in")

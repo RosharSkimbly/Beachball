@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 var animation_direction = "Down"
-
+@export var notfrozen = true
 
 func get_direction(animation_direction):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -40,5 +40,6 @@ func _physics_process(delta):
 		speed = 200
 	animation_direction = get_direction(animation_direction)[1]
 	get_direction(animation_direction)
-	move_and_slide()
-	walk_cycle(animation_direction)
+	if notfrozen == true:
+		move_and_slide()
+		walk_cycle(animation_direction)
