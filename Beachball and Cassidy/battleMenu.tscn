@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://djgcnsfr08dfc" path="res://Images/heart_sprite.png" id="7_cnncj"]
 [ext_resource type="Texture2D" uid="uid://dq4mw2cc8417o" path="res://Images/reasonbutton.png" id="7_own2e"]
 [ext_resource type="Texture2D" uid="uid://7wlutl3ior60" path="res://Images/button outline.png" id="8_is30j"]
-[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Images/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="8_s32yx"]
+[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Pixelify_Sans/static/PixelifySans-Regular.ttf" id="8_s32yx"]
 [ext_resource type="Texture2D" uid="uid://cabjugb17n0m7" path="res://Images/fight cass png 2.png" id="9_e3l2m"]
 [ext_resource type="Texture2D" uid="uid://b3opus1deonpn" path="res://Images/fight bb png 2.png" id="10_mxnbh"]
 

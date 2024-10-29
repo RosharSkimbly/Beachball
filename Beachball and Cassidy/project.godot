@@ -13,7 +13,7 @@ config_version=5
 config/name="Beachball and Cassidy"
 run/main_scene="res://titleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Images/icon.svg"
 
 [autoload]
 
@@ -22,6 +22,7 @@ GlobalNums="*res://global_nums.gd"
 [display]
 
 window/size/initial_position_type=0
+window/stretch/mode="viewport"
 
 [input]
 

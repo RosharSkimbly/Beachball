@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3e53hap5ma54" path="res://Images/IMG_0120.PNG" id="1_phwqq"]
 [ext_resource type="Script" path="res://Cassidy_Move.gd" id="3_c43ta"]
 [ext_resource type="Texture2D" uid="uid://b1ykv7h668dgq" path="res://Images/sprite png.png" id="4_q7uo4"]
-[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Images/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="5_xk43t"]
+[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Pixelify_Sans/static/PixelifySans-Regular.ttf" id="5_xk43t"]
 [ext_resource type="Texture2D" uid="uid://djgcnsfr08dfc" path="res://Images/heart_sprite.png" id="6_jsd61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nx7p0"]
@@ -182,6 +182,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_fu6dh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_3126v"]
 resource_name = "cursorblink"
 loop_mode = 1
@@ -198,40 +213,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_fu6dh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wue4i"]
 _data = {
 "RESET": SubResource("Animation_fu6dh"),
 "cursorblink": SubResource("Animation_3126v")
-}
-
-[sub_resource type="Animation" id="Animation_evu1p"]
-resource_name = "fadeout"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fcui6"]
@@ -247,6 +232,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_evu1p"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nibmw"]
@@ -366,9 +366,8 @@ libraries = {
 "": SubResource("AnimationLibrary_nibmw")
 }
 
-[connection signal="battlechange" from="." to="." method="_on_battlechange"]
-[connection signal="area_entered" from="SceneBack" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="SceneBack" to="." method="_on_scene_back_area_entered"]
+[connection signal="area_entered" from="SceneBack" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="SceneBack" to="." method="_on_scene_back_body_entered"]
 [connection signal="area_entered" from="BeachConvo" to="." method="_on_beach_convo_area_entered"]
 [connection signal="area_entered" from="BeachConvo" to="." method="_on_area_2d_area_entered"]

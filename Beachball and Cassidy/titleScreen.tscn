@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://TitleScreen.gd" id="1_u8j3i"]
 [ext_resource type="Texture2D" uid="uid://bapyim7yk58d7" path="res://Images/unnamed.png" id="2_6w23j"]
-[ext_resource type="FontFile" uid="uid://c7w6d8w70l6rk" path="res://Images/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="9_mndh6"]
+[ext_resource type="FontFile" uid="uid://c7w6d8w70l6rk" path="res://Pixelify_Sans/static/PixelifySans-Bold.ttf" id="9_mndh6"]
 
 [sub_resource type="Animation" id="Animation_abit3"]
 length = 0.001

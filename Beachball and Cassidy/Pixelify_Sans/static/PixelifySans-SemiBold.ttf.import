@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7w6d8w70l6rk"
-path="res://.godot/imported/PixelifySans-Bold.ttf-db9366cf5b8863dcf00eac63ef2b6048.fontdata"
+uid="uid://cm5eususe2rqf"
+path="res://.godot/imported/PixelifySans-SemiBold.ttf-1e4768e1ea71c6896492ff8a1da68d7f.fontdata"
 
 [deps]
 
-source_file="res://Images/Pixelify_Sans/static/PixelifySans-Bold.ttf"
-dest_files=["res://.godot/imported/PixelifySans-Bold.ttf-db9366cf5b8863dcf00eac63ef2b6048.fontdata"]
+source_file="res://Pixelify_Sans/static/PixelifySans-SemiBold.ttf"
+dest_files=["res://.godot/imported/PixelifySans-SemiBold.ttf-1e4768e1ea71c6896492ff8a1da68d7f.fontdata"]
 
 [params]
 
