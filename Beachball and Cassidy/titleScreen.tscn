@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5b0hwau1hhqw"]
+[gd_scene load_steps=10 format=3 uid="uid://c5b0hwau1hhqw"]
 
 [ext_resource type="Script" path="res://TitleScreen.gd" id="1_u8j3i"]
 [ext_resource type="Texture2D" uid="uid://bapyim7yk58d7" path="res://Images/unnamed.png" id="2_6w23j"]
+[ext_resource type="FontFile" uid="uid://cm5eususe2rqf" path="res://Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_y8bmk"]
+[ext_resource type="FontFile" uid="uid://pulsdk0u533d" path="res://Pixelify_Sans/static/PixelifySans-Regular.ttf" id="5_bf8rt"]
+[ext_resource type="Texture2D" uid="uid://bs17e2iktebo4" path="res://Images/instruction_exit_button.png" id="6_4ecmf"]
 [ext_resource type="FontFile" uid="uid://c7w6d8w70l6rk" path="res://Pixelify_Sans/static/PixelifySans-Bold.ttf" id="9_mndh6"]
 
 [sub_resource type="Animation" id="Animation_abit3"]
@@ -102,9 +105,9 @@ text = "Beachball and Cassidy"
 [node name="Start" type="Button" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 280.0
+offset_top = 224.0
 offset_right = 576.0
-offset_bottom = 392.0
+offset_bottom = 336.0
 theme_override_colors/font_color = Color(0.737255, 0.494118, 0.835294, 1)
 theme_override_fonts/font = ExtResource("9_mndh6")
 theme_override_font_sizes/font_size = 60
@@ -113,15 +116,93 @@ text = "Start!"
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 472.0
+offset_top = 480.0
 offset_right = 576.0
-offset_bottom = 584.0
+offset_bottom = 592.0
 theme_override_colors/font_color = Color(0.737255, 0.494118, 0.835294, 1)
 theme_override_fonts/font = ExtResource("9_mndh6")
 theme_override_font_sizes/font_size = 60
 text = "Quit!"
 
+[node name="Instructions" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 352.0
+offset_right = 576.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0.737255, 0.494118, 0.835294, 1)
+theme_override_fonts/font = ExtResource("9_mndh6")
+theme_override_font_sizes/font_size = 60
+text = "Instructions!"
+
+[node name="InstructionBack" type="ColorRect" parent="Instructions"]
+visible = false
+modulate = Color(1, 1, 1, 0.792157)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -320.0
+offset_right = 1096.0
+offset_bottom = 272.0
+color = Color(1, 0.760784, 0.764706, 1)
+
+[node name="InstructionTitle" type="Label" parent="Instructions/InstructionBack"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 1051.0
+offset_bottom = 127.0
+theme_override_colors/font_shadow_color = Color(0.717647, 0.454902, 0.831373, 1)
+theme_override_fonts/font = ExtResource("4_y8bmk")
+theme_override_font_sizes/font_size = 47
+text = "Welcome to the proof of concept build of 
+Beachball and Cassidy!"
+horizontal_alignment = 1
+
+[node name="InstructionSubtitle" type="Label" parent="Instructions/InstructionBack"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 144.0
+offset_right = 875.0
+offset_bottom = 181.0
+theme_override_colors/font_shadow_color = Color(0.737255, 0.494118, 0.843137, 1)
+theme_override_fonts/font = ExtResource("5_bf8rt")
+theme_override_font_sizes/font_size = 30
+text = "Here's some information to get you started!"
+
+[node name="InstructionBody" type="Label" parent="Instructions/InstructionBack"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 1066.0
+offset_bottom = 574.0
+theme_override_colors/font_shadow_color = Color(0.776471, 0.611765, 0.839216, 1)
+theme_override_fonts/font = ExtResource("5_bf8rt")
+theme_override_font_sizes/font_size = 21
+text = "You've found yourself alone on a strange world, crashed from a bizarre metal pod with only the 
+clothes on your back... what will you do?
+
+To walk around, use WASD or arrow keys for movement.
+
+To continue text boxes, click, hit enter, or hit Z.
+
+When you enter battle, you can choose between five options by clicking them:
+Attack: Deal a bit of damage.
+Defend: Reduce damage from whatever the enemy does next turn.
+Skills: Opens a list of skills that can be used to gain the upper hand in battle.
+Communicate: Used to command allies (which you do not have any  of yet).
+Reason: Attempts a non-violent solution."
+
+[node name="InstructionExit" type="TextureButton" parent="Instructions/InstructionBack"]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 16.0
+offset_right = 1072.0
+offset_bottom = 56.0
+texture_normal = ExtResource("6_4ecmf")
+stretch_mode = 0
+
 [node name="FadeOut" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1169.0
 offset_bottom = 667.0
@@ -134,3 +215,5 @@ libraries = {
 
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Instructions" to="." method="_on_instructions_button_up"]
+[connection signal="button_up" from="Instructions/InstructionBack/InstructionExit" to="." method="_on_instruction_exit_button_up"]
