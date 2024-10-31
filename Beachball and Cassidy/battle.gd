@@ -38,11 +38,13 @@ func _process(delta):
 		$TextMenu/Label.text = "You have died."
 		end = true
 	if beach_health <= 0:
-		$TextMenu/Label.text = "The robot sputtered out from the fire. You should probably check it out."
+		$TextMenu/Label.text = "The robot sputtered out from the fire. 
+		You should probably check it out."
 		end = true
 
 	if in_battle == false:
-		# Causes the text displayed to take time to scroll across the box before being allowed to skip
+		# Causes the text displayed to take time to scroll across the box before
+		# being allowed to skip
 		if scrolling == true:
 			$TextMenu/FlashingCursor.visible = false
 			$TextMenu/Label.visible_characters += 1
@@ -95,9 +97,10 @@ func _process(delta):
 									)
 							else:
 								$TextMenu/Label.text = "The robot missed with its attack!"
-							# Resets guard and lowers skill cooldowns, then lets the earlier scrolling
-							# function handle the text output before handing off again to the player's turn
-							# This happens in the same way for every one of the robot's options.
+							# Resets guard and lowers skill cooldowns, then lets the earlier
+							# scrolling function handle the text output before handing off again to
+							# the player's turn. This happens in the same way for every one of the 
+							# robot's options.
 							guard_up = false
 							skill_cooldown -= 1
 							$TextMenu/Label.visible_characters = 0
@@ -135,7 +138,8 @@ func _process(delta):
 								turn += 1
 								in_battle = false
 							else:
-								$TextMenu/Label.text = "The robot started spewing a strange liquid! Your accuracy was lowered!"
+								$TextMenu/Label.text = "The robot started spewing a strange liquid! 
+								Your accuracy was lowered!"
 								guard_up = false
 								skill_cooldown -= 1
 								accuracy = (accuracy * 3) / 4
@@ -146,7 +150,8 @@ func _process(delta):
 						else:
 							# Below 50 health, the enemy first takes a turn where it idles
 							if first_half == 0:
-								$TextMenu/Label.text = "The robot sputtered and flailed from its wounds!"
+								$TextMenu/Label.text = "The robot sputtered and flailed from its 
+								wounds!"
 								guard_up = false
 								skill_cooldown -= 1
 								$TextMenu/Label.visible_characters = 0
@@ -325,7 +330,8 @@ func _on_reason_button_up() -> void:
 		turn += 1
 		# Gets rid of menu
 		invisible_menu()
-		$TextMenu/Label.text = "You tried to speak to the robot, but it just returned a harsh static..."
+		$TextMenu/Label.text = "You tried to speak to the robot, but it just 
+		returned a harsh static..."
 		# Prepares the text to turn over to the _process function
 		$TextMenu/Label.visible_characters = 0
 		$TextMenu.visible = true
